@@ -13,12 +13,12 @@ namespace apitest.Managers
         public List<MovieView> GetAllMovieData()
         {
             _context.connection = "server = localhost; database = IMDB; user id = reader123; password = 123";
-            return _context.MovieView.Take(2).ToList();
+            return _context.MovieView.Take(2).OrderBy(a => a.PrimaryTitle).ToList();
         }
         public List<ActorView> GetAllActorData()
         {
             _context.connection = "server = localhost; database = IMDB; user id = reader123; password = 123";
-            return _context.ActorView.Take(10).ToList();
+            return _context.ActorView.Take(10).OrderBy(a => a.PrimaryName).ToList();
         }
 
         public ActorView GetActorData(string name)
